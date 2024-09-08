@@ -1,0 +1,19 @@
+name: OrleansCommands
+version: '1.0-SNAPSHOT'
+main: com.orleansmc.commands.OrleansCommands
+api-version: '1.20'
+authors: [ MustqfaCan ]
+depend:
+  - helper
+  - OrleansMC
+  - SkinsRestorer
+permissions:
+  "orleansmc.commands.*":
+    description: Allows access to all OrleansMC commands
+    default: op
+  "orleansmc.commands.craftingtable":
+    description: Allows access to the /craftingtable command
+    default: op
+  "orleansmc.commands.enchantingtable":
+    description: Allows access to the /enchantingtable command
+    default: op

@@ -1,0 +1,21 @@
+cooldowns:
+  lord:
+    repair: -1
+    feed: 3600
+    head: 1200
+    skin: 10800
+  titan:
+    repair: -1
+    feed: 1800
+    head: 600
+    skin: 10800
+  yuce:
+    repair: -1
+    feed: 1200
+    head: 300
+    skin: 3600
+  legend:
+    repair: 3600
+    feed: 300
+    head: 60
+    skin: 600
