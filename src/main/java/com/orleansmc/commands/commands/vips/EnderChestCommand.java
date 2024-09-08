@@ -10,6 +10,12 @@ public class EnderChestCommand {
                 .assertPermission("orleansmc.commands.enderchest")
                 .handler(c -> {
                     c.sender().openInventory(c.sender().getEnderChest());
+                    c.sender().playSound(
+                            c.sender().getLocation(),
+                            org.bukkit.Sound.BLOCK_ENDER_CHEST_OPEN,
+                            1,
+                            1
+                    );
                 })
                 .registerAndBind(plugin, "enderchest");
     }

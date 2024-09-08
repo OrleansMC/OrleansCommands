@@ -7,6 +7,7 @@ import com.orleansmc.commands.settings.Settings;
 import com.orleansmc.commands.utils.Util;
 import me.lucko.helper.Commands;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class FeedCommand {
@@ -32,6 +33,16 @@ public class FeedCommand {
 
                         // Oyuncunun açlık seviyesi dolduruluyor
                         player.setFoodLevel(20);
+                        Bukkit.getScheduler().runTask(plugin, () -> {
+                            player.sendMessage(Util.getComponent(
+                                    "<color:#00ff00>Afiyet olsun!</color>"
+                            ));
+                            for (int i = 0; i < 3; i++) {
+                                Bukkit.getScheduler().runTaskLater(plugin, () ->
+                                                player.playSound(player.getLocation(), Sound.ITEM_HONEY_BOTTLE_DRINK, 1, 1),
+                                        i * 10);
+                            }
+                        });
 
                         int cooldown = 0;
                         for (String group : LuckPermsManager.getPlayerGroups(player)) {

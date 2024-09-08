@@ -15,7 +15,6 @@ import net.skinsrestorer.api.storage.PlayerStorage;
 import net.skinsrestorer.api.storage.SkinStorage;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.Optional;
 
@@ -48,6 +47,13 @@ public class SkinCommand {
                                 player.sendMessage(Util.getExclamation() + "Bir oyuncu adı belirtmelisiniz.");
                                 return;
                             }
+
+                            player.playSound(player.getLocation(), "block.note_block.pling", 1, 1);
+                            player.sendMessage(Util.getComponent(
+                                    "<color:#00ff00>✔</color> Skin yükleniyor... Ekranınız gidip gelecek."
+                            ));
+                            Thread.sleep(2000); // 1 saniye bekleme
+
                             SkinStorage skinStorage = skinsRestorerAPI.getSkinStorage();
                             Optional<InputDataResult> result = skinStorage.findOrCreateSkinData(skin);
 
@@ -65,6 +71,8 @@ public class SkinCommand {
                             skinsRestorerAPI.getSkinApplier(Player.class).applySkin(player);
                         } catch (DataRequestException | MineSkinException e) {
                             e.printStackTrace();
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
                         }
 
                         int cooldown = 0;
@@ -77,6 +85,6 @@ public class SkinCommand {
                         CooldownManager.setCooldown(player.getName(), "skin", cooldown); // Örnek olarak 300 saniye cooldown
                     });
                 })
-                .registerAndBind(plugin, "skin", "kafa");
+                .registerAndBind(plugin, "skin", "cilt");
     }
 }

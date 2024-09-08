@@ -8,6 +8,7 @@ import com.orleansmc.commands.utils.Util;
 import me.lucko.helper.Commands;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -36,15 +37,19 @@ public class RepairCommand {
                         ItemStack itemInHand = player.getInventory().getItemInMainHand();
                         if (itemInHand.getType() != Material.AIR) {
                             itemInHand.setDurability((short) 0);
-                            Bukkit.getScheduler().runTask(plugin, () ->
-                                    player.sendMessage(Util.getComponent(
-                                            "<color:#00ff00>✔</color> Elindeki eşya başarıyla onarıldı."
-                                    )));
                         } else {
                             Bukkit.getScheduler().runTask(plugin, () ->
                                     player.sendMessage(Util.getExclamation() + "Onarılacak bir eşya tutmalısın.")
                             );
+                            return;
                         }
+
+                        Bukkit.getScheduler().runTask(plugin, () -> {
+                            player.sendMessage(Util.getComponent(
+                                    "<color:#00ff00>Eşyanız başarıyla onarıldı.</color>"
+                            ));
+                            player.playSound(player.getLocation(), Sound.BLOCK_ANVIL_USE, 1, 1);
+                        });
 
                         int cooldown = 0;
                         for (String group : LuckPermsManager.getPlayerGroups(player)) {

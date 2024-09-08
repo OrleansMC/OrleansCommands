@@ -12,7 +12,8 @@ public class Settings {
             CooldownData data = new CooldownData(group, new GroupCooldownData(
                     config.getInt("cooldowns." + group + ".repair"),
                     config.getInt("cooldowns." + group + ".feed"),
-                    config.getInt("cooldowns." + group + ".head")
+                    config.getInt("cooldowns." + group + ".head"),
+                    config.getInt("cooldowns." + group + ".skin")
             ));
             cooldowns.put(group, data);
         }

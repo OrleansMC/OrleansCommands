@@ -10,6 +10,12 @@ public class CraftingTableCommand {
                 .assertPermission("orleansmc.commands.craftingtable")
                 .handler(c -> {
                     c.sender().openWorkbench(null, true);
+                    c.sender().playSound(
+                            c.sender().getLocation(),
+                            org.bukkit.Sound.BLOCK_WOODEN_BUTTON_CLICK_ON,
+                            1,
+                            1
+                    );
                 })
                 .registerAndBind(plugin, "crafting", "çalışma-masası");
     }
