@@ -36,6 +36,12 @@ public class RepairCommand {
                         // Elindeki eşya onarılıyor
                         ItemStack itemInHand = player.getInventory().getItemInMainHand();
                         if (itemInHand.getType() != Material.AIR) {
+                            if (itemInHand.getDurability() == 0) {
+                                Bukkit.getScheduler().runTask(plugin, () ->
+                                        player.sendMessage(Util.getExclamation() + "Kız bu eşya kafan kadar sağlam!")
+                                );
+                                return;
+                            }
                             itemInHand.setDurability((short) 0);
                         } else {
                             Bukkit.getScheduler().runTask(plugin, () ->

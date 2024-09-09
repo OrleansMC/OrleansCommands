@@ -31,6 +31,13 @@ public class FeedCommand {
                             return;
                         }
 
+                        if (player.getFoodLevel() == 20) {
+                            Bukkit.getScheduler().runTask(plugin, () ->
+                                    player.sendMessage(Util.getExclamation() + "Ay daha da yersen çatlican ayol!")
+                            );
+                            return;
+                        }
+
                         // Oyuncunun açlık seviyesi dolduruluyor
                         player.setFoodLevel(20);
                         Bukkit.getScheduler().runTask(plugin, () -> {
