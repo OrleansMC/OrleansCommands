@@ -43,6 +43,8 @@ assemble.dependsOn(shadowJar)
 dependencies {
     implementation 'com.github.stefvanschie.inventoryframework:IF:0.10.16'
     compileOnly(fileTree("${project.rootDir}/lib") { include("*.jar") })
+    compileOnly 'com.github.Emibergo02:RedisEconomy:4.3.9'
+    compileOnly "com.github.MilkBowl:VaultAPI:1.7"
     compileOnly 'net.skinsrestorer:skinsrestorer-api:15.4.0'
     compileOnly 'com.github.decentsoftware-eu:decentholograms:2.8.11'
     compileOnly 'com.mojang:authlib:1.5.21'
