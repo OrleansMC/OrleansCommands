@@ -11,11 +11,11 @@ public class PlayTimeMoneyManager {
 
     public PlayTimeMoneyManager(OrleansCommands plugin) {
         redisEconomyAPI = RedisEconomyAPI.getAPI();
-        String gemIcon = PlaceholderAPI.setPlaceholders(null, "%img_gem%");
 
         plugin.getServer().getScheduler().runTaskTimerAsynchronously(plugin, () -> {
             plugin.getLogger().info("Checking online players for money reward");
             Bukkit.getOnlinePlayers().forEach(player -> {
+                String gemIcon = PlaceholderAPI.setPlaceholders(player, "%img_gem%");
                 redisEconomyAPI.getDefaultCurrency().depositPlayer(
                         player.getName(),
                         6
