@@ -17,3 +17,6 @@ permissions:
   "orleansmc.commands.enchantingtable":
     description: Allows access to the /enchantingtable command
     default: op
+  "orleansmc.commands.promotion":
+    description: Allows access to the /promotion command
+    default: op
