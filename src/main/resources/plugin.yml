@@ -1,7 +1,7 @@
 name: OrleansCommands
 version: '1.0-SNAPSHOT'
 main: com.orleansmc.commands.OrleansCommands
-api-version: '1.20'
+api-version: '1.21'
 authors: [ MustqfaCan ]
 depend:
   - helper
